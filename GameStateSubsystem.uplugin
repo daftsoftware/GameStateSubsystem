@@ -1,0 +1,31 @@
+{
+	"FileVersion" : 3,
+	"Version" : 1.0,
+	"FriendlyName" : "GameState Subsystems",
+	"Description" : "Replicated Subsystems for Modular GameState.",
+	"Category" : "Gameplay",
+	"CreatedByURL" : "https://github.com/daftsoftware",
+	"EnabledByDefault" : true,
+	"CanContainContent" : false,
+	"IsBetaVersion" : false,
+	"Installed" : false,
+	"Modules" :
+	[
+		{
+			"Name" : "GameStateSubsystem",
+			"Type" : "Runtime",
+			"LoadingPhase" : "PreDefault"
+		},
+		{
+			"Name" : "GameStateSubsystemEd",
+			"Type" : "Editor",
+			"LoadingPhase" : "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModularGameplay",
+			"Enabled": true
+		}
+	]
+}
