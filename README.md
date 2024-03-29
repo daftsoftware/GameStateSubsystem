@@ -1,7 +1,8 @@
 
 ## GameState Subsystems
 
-Replicated Subsystems! For GameStates!
+Does what it says on the tin. Extensible GameState via subsystems rather than GameState Components.
+To setup please enable the plugin and reparent your GameState to AExtensibleGameStateBase, then just create a UGameStateSubsystem and it will be replicated and initialized automatically.
 
 ## Why didn't you just replicate world subsystems?
 
@@ -9,9 +10,7 @@ Because World Subsystems have bizarre and awkward lifetimes that highly complica
 
 ## Why is this useful?
 
-1. Primarily because upon successfully creating the well requested "Replicated WorldSubsystem" I realized that the only context it was actually useful in was one where you already had a GameState and due to the singleton behaviour of Subsystems it actually can't meaningfully function in any other way than like a GameState - aka. the Server may only have 1 instance of a Subsystem, therefore a setup similar to what you have with PlayerControllers isn't really possible.
-
-2. I really don't like Lyra Experiences, however I do see the value of GameState Components from the Modular Gameplay Framework. I find this to be a bit of "best of both worlds", where you don't strictly need to setup some data asset defining which GameState Components are available, and you don't need to do manual SubObject management for the Components like you would with vanilla Modular Gameplay, rather they automatically register themselves.
+I am not the biggest fan of the Lyra Experience system, however I do see it's value - especially in GameState Components. However for some cases I think that it would be nice if they sort of just registered themselves and "just worked"tm rather than needing to be manually added via a SubObject or added to a Lyra Experience. So I did, and I find this solution to be a bit of a best of both worlds.
 
 ## Contributions
 
