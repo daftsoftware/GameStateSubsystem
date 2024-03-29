@@ -1,9 +1,10 @@
 {
 	"FileVersion" : 3,
-	"Version" : 1.0,
+	"Version" : 1,
 	"FriendlyName" : "GameState Subsystems",
 	"Description" : "Replicated Subsystems for Modular GameState.",
 	"Category" : "Gameplay",
+	"CreatedBy" : "Daft Software.",
 	"CreatedByURL" : "https://github.com/daftsoftware",
 	"EnabledByDefault" : true,
 	"CanContainContent" : false,

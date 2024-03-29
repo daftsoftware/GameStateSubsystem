@@ -7,17 +7,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using UnrealBuildTool;
+#pragma once
 
-public class GameStateSubsystemEd : ModuleRules
+#include "Modules/ModuleInterface.h"
+
+class FGameStateSubsystemEdModule : public IModuleInterface
 {
-	public GameStateSubsystemEd(ReadOnlyTargetRules Target) : base(Target)
-	{
-		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-	
-		PrivateDependencyModuleNames.AddRange(new string[] {
-			"Core",
-			"CoreUObject"
-		});
-	}
-}
+	void StartupModule() override;
+	void ShutdownModule() override;
+};
