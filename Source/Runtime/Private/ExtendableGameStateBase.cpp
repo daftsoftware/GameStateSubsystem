@@ -7,9 +7,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "ModularGameStateBase.h"
+#include "ExtendableGameStateBase.h"
 
-void AModularGameStateBase::PostInitializeComponents()
+AExtendableGameStateBase::AExtendableGameStateBase()
+{
+	bReplicateUsingRegisteredSubObjectList = true;
+}
+
+void AExtendableGameStateBase::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
 	
@@ -17,26 +22,32 @@ void AModularGameStateBase::PostInitializeComponents()
 	SubsystemCollection.Initialize(this);
 }
 
-void AModularGameStateBase::BeginPlay()
+void AExtendableGameStateBase::BeginPlay()
 {
 	Super::BeginPlay();
 
 	for(UGameStateSubsystem* Subsystem : GetSubsystemArray<UGameStateSubsystem>())
 	{
+		AddReplicatedSubObject(Subsystem);
 		Subsystem->BeginPlay();
 	}
 }
 
-void AModularGameStateBase::EndPlay(const EEndPlayReason::Type EndPlayReason)
+void AExtendableGameStateBase::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
+	for(UGameStateSubsystem* Subsystem : GetSubsystemArray<UGameStateSubsystem>())
+	{
+		RemoveReplicatedSubObject(Subsystem);
+	}
+	
 	SubsystemCollection.Deinitialize();
 	
 	Super::EndPlay(EndPlayReason);
 }
 
-void AModularGameStateBase::AddReferencedObjects(UObject* InThis, FReferenceCollector& Collector)
+void AExtendableGameStateBase::AddReferencedObjects(UObject* InThis, FReferenceCollector& Collector)
 {
-	AModularGameStateBase* This = CastChecked<AModularGameStateBase>(InThis);
+	AExtendableGameStateBase* This = CastChecked<AExtendableGameStateBase>(InThis);
 	This->SubsystemCollection.AddReferencedObjects(InThis, Collector);
 	Super::AddReferencedObjects(InThis, Collector);
 }

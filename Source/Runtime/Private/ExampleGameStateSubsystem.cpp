@@ -11,20 +11,52 @@
 #include "Logging/StructuredLog.h"
 #include "Net/UnrealNetwork.h"
 
+static FString NetModeToString(ENetMode InNetMode)
+{
+	switch(InNetMode)
+	{
+		case NM_Standalone:
+			return TEXT("Standalone");
+		case NM_DedicatedServer:
+			return TEXT("DedicatedServer");
+		case NM_ListenServer:
+			return TEXT("ListenServer");
+		case NM_Client:
+			return TEXT("Client");
+		default:
+			checkf(false, TEXT("Invalid NetMode"));
+			return TEXT("Invalid");
+	}
+}
+
 void UExampleGameStateSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
 
 	checkf(GetOuter(), TEXT("No Outer."));
 
-	UE_LOGFMT(LogTemp, Display, "Initialized Example Gamestate Subsystem, NetMode - {0}", GetWorld()->GetNetMode());
+	GetWorldTimerManager().SetTimer(RPCTestTimer, FTimerDelegate::CreateWeakLambda(this, [this]()
+	{
+		if(HasAuthority())
+		{
+			ServerDoSomething();
+		}
+		else
+		{
+			ClientDoSomething();
+		}
+	}), 5.0f, true);
+
+	UE_LOGFMT(LogNet, Display, "Initialized Example Gamestate Subsystem, NetMode - {0}", NetModeToString(GetWorld()->GetNetMode()));
 }
 
 void UExampleGameStateSubsystem::Deinitialize()
 {
 	Super::Deinitialize();
+
+	RPCTestTimer.Invalidate();
 	
-	UE_LOGFMT(LogTemp, Display, "Deinitialized Example Gamestate Subsystem, NetMode - {0}", GetWorld()->GetNetMode());
+	UE_LOGFMT(LogNet, Display, "Deinitialized Example Gamestate Subsystem, NetMode - {0}", NetModeToString(GetWorld()->GetNetMode()));
 }
 
 bool UExampleGameStateSubsystem::ShouldCreateSubsystem(UObject* Outer) const
@@ -52,15 +84,19 @@ void UExampleGameStateSubsystem::GetLifetimeReplicatedProps(TArray<FLifetimeProp
 
 void UExampleGameStateSubsystem::ServerDoSomething_Implementation()
 {
-	UE_LOGFMT(LogTemp, Display, "Logging Something on Server! {0}", GetWorld()->GetNetMode());
+	RepVar1 = FMath::Rand();
+	UE_LOGFMT(LogNet, Display, "Logging Something on Server! {0}", NetModeToString(GetWorld()->GetNetMode()));
 }
 
 void UExampleGameStateSubsystem::ClientDoSomething_Implementation()
 {
-	UE_LOGFMT(LogTemp, Display, "Logging Something on Client! {0}", GetWorld()->GetNetMode());
+	UE_LOGFMT(LogNet, Display, "Logging Something on Client! {0}", NetModeToString(GetWorld()->GetNetMode()));
 }
 
 void UExampleGameStateSubsystem::OnRep_RepVar2(int32 NewVar2)
 {
-	UE_LOGFMT(LogTemp, Display, "RepVar2 Changed on Example GameState Subsystem! {0}", NewVar2);
+	if(!HasAuthority())
+	{
+		UE_LOGFMT(LogNet, Display, "RepVar2 Changed on Example GameState Subsystem! {0}", NewVar2);
+	}
 }

@@ -12,7 +12,7 @@
 #include "Subsystems/Subsystem.h"
 #include "GameStateSubsystem.generated.h"
 
-class AModularGameStateBase;
+class AExtendableGameStateBase;
 
 /**
  * GameStateSubsystems offer an alternative to UGameStateComponent for compositional systems that need
@@ -45,13 +45,15 @@ public:
 
 	virtual void BeginPlay() {}
 
-	GAMESTATESUBSYSTEM_API AModularGameStateBase* GetGameState() const;
+	GAMESTATESUBSYSTEM_API AExtendableGameStateBase* GetGameState() const;
 
 	template<typename T>
 	T* GetGameState() const
 	{
 		return Cast<T>(GetGameState());
 	}
+
+	GAMESTATESUBSYSTEM_API FTimerManager& GetWorldTimerManager() { return GetWorld()->GetTimerManager(); }
 
 	GAMESTATESUBSYSTEM_API ENetRole GetLocalRole() const;
 	GAMESTATESUBSYSTEM_API bool HasAuthority() const;

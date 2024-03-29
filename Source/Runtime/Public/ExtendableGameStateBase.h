@@ -11,13 +11,15 @@
 
 #include "GameStateSubsystem.h"
 #include "GameFramework/GameStateBase.h"
-#include "ModularGameStateBase.generated.h"
+#include "ExtendableGameStateBase.generated.h"
 
 UCLASS(MinimalAPI)
-class AModularGameStateBase : public AGameStateBase
+class AExtendableGameStateBase : public AGameStateBase
 {
 	GENERATED_BODY()
 public:
+
+	AExtendableGameStateBase();
 
 	virtual void PostInitializeComponents() override;
 	virtual void BeginPlay() override;
@@ -46,7 +48,7 @@ public:
 	 * returns nullptr if the Subsystem cannot be found or the GameState is null
 	 */
 	template <typename TSubsystemClass>
-	static FORCEINLINE TSubsystemClass* GetSubsystem(const AModularGameStateBase* GameState)
+	static FORCEINLINE TSubsystemClass* GetSubsystem(const AExtendableGameStateBase* GameState)
 	{
 		if (GameState)
 		{
@@ -58,7 +60,7 @@ public:
 	/**
 	 * Get all Subsystem of specified type, this is only necessary for interfaces that can have multiple implementations instanced at a time.
 	 *
-	 * Do not hold onto this Array reference unless you are sure the lifetime is less than that of AModularGameStateBase
+	 * Do not hold onto this Array reference unless you are sure the lifetime is less than that of AExtendableGameStateBase
 	 */
 	template <typename TSubsystemClass>
 	const TArray<TSubsystemClass*>& GetSubsystemArray() const

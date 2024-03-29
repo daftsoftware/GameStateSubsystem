@@ -8,11 +8,11 @@
 // SOFTWARE.
 
 #include "GameStateSubsystem.h"
-#include "ModularGameStateBase.h"
+#include "ExtendableGameStateBase.h"
 
-AModularGameStateBase* UGameStateSubsystem::GetGameState() const
+AExtendableGameStateBase* UGameStateSubsystem::GetGameState() const
 {
-	return CastChecked<AModularGameStateBase>(GetOuter());
+	return CastChecked<AExtendableGameStateBase>(GetOuter());
 }
 
 ENetRole UGameStateSubsystem::GetLocalRole() const
@@ -51,8 +51,6 @@ bool UGameStateSubsystem::IsSupportedForNetworking() const
 	return true;
 }
 
-#if !UE_WITH_IRIS
-
 int32 UGameStateSubsystem::GetFunctionCallspace(UFunction* Function, FFrame* Stack)
 {
 	return GetGameState()->GetFunctionCallspace(Function, Stack);
@@ -67,8 +65,6 @@ bool UGameStateSubsystem::CallRemoteFunction(UFunction* Function, void* Parms, F
 	}
 	return false;
 }
-
-#endif
 
 ETickableTickType UTickableGameStateSubsystem::GetTickableTickType() const
 {
