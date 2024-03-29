@@ -16,7 +16,7 @@ I am not the biggest fan of the Lyra Experience system, however I do see it's va
 
 ## Support
 
-This code was designed to work on a version > 5.3 but it's likely possible to backport the code. It doesn't necessarily do any black magic or special things that is new to the engine.
+This code was designed to work on a version > 5.3 but it's likely possible to backport the code. It doesn't necessarily do any black magic or special things that are new to the engine.
 
 ## Contributions
 
