@@ -56,7 +56,7 @@ void UK2Node_GetGameStateSubsystem::ExpandNode(class FKismetCompilerContext& Com
 	}
 
 	//////////////////////////////////////////////////////////////////////////
-	// create 'USubsystemBlueprintLibrary::Get[something]Subsystem' call node
+	// create 'UGameStateSubsystemBlueprintLibrary::GetGameStateSubsystem' call node
 	UK2Node_CallFunction* CallGetNode = CompilerContext.SpawnIntermediateNode<UK2Node_CallFunction>(GetSubsystemNode, SourceGraph);
 	CallGetNode->FunctionReference.SetExternalMember(Get_FunctionName, UGameStateSubsystemBlueprintLibrary::StaticClass());
 	CallGetNode->AllocateDefaultPins();
@@ -67,22 +67,22 @@ void UK2Node_GetGameStateSubsystem::ExpandNode(class FKismetCompilerContext& Com
 
 	if (SpawnClassPin && SpawnClassPin->LinkedTo.Num() > 0)
 	{
-		// Copy the 'class' connection from the spawn node to 'USubsystemBlueprintLibrary::Get[something]Subsystem'
+		// Copy the 'class' connection from the spawn node to 'UGameStateSubsystemBlueprintLibrary::GetGameStateSubsystem'
 		CompilerContext.MovePinLinksToIntermediate(*SpawnClassPin, *CallCreateClassTypePin);
 	}
 	else
 	{
-		// Copy class literal onto 'USubsystemBlueprintLibrary::Get[something]Subsystem' call
+		// Copy class literal onto 'UGameStateSubsystemBlueprintLibrary::GetGameStateSubsystem' call
 		CallCreateClassTypePin->DefaultObject = *CustomClass;
 	}
 
-	// Copy the world context connection from the spawn node to 'USubsystemBlueprintLibrary::Get[something]Subsystem' if necessary
+	// Copy the world context connection from the spawn node to 'UGameStateSubsystemBlueprintLibrary::GetGameStateSubsystem' if necessary
 	if (SpawnWorldContextPin)
 	{
 		CompilerContext.MovePinLinksToIntermediate(*SpawnWorldContextPin, *CallCreateWorldContextPin);
 	}
 
-	// Move result connection from spawn node to 'USubsystemBlueprintLibrary::Get[something]Subsystem'
+	// Move result connection from spawn node to 'UGameStateSubsystemBlueprintLibrary::GetGameStateSubsystem'
 	CallCreateResult->PinType = SpawnNodeResult->PinType;
 	CompilerContext.MovePinLinksToIntermediate(*SpawnNodeResult, *CallCreateResult);
 
@@ -203,7 +203,7 @@ void UK2Node_GetSubsystemFromGS::ExpandNode(FKismetCompilerContext& CompilerCont
 	}
 
 	//////////////////////////////////////////////////////////////////////////
-	// create 'USubsystemBlueprintLibrary::GetLocalPlayerSubSystemFromPlayerController' call node
+	// create 'UGameStateSubsystemBlueprintLibrary::GetGameStateSubsystemFromGameState' call node
 	UK2Node_CallFunction* CallGetNode = CompilerContext.SpawnIntermediateNode<UK2Node_CallFunction>(GetSubsystemFromGSNode, SourceGraph);
 	CallGetNode->FunctionReference.SetExternalMember(Get_FunctionName, UGameStateSubsystemBlueprintLibrary::StaticClass());
 	CallGetNode->AllocateDefaultPins();
@@ -214,7 +214,7 @@ void UK2Node_GetSubsystemFromGS::ExpandNode(FKismetCompilerContext& CompilerCont
 
 	if (SpawnClassPin && SpawnClassPin->LinkedTo.Num() > 0)
 	{
-		// Copy the 'class' connection from the spawn node to 'USubsystemBlueprintLibrary::GetLocalPlayerSubSystemFromPlayerController'
+		// Copy the 'class' connection from the spawn node to 'UGameStateSubsystemBlueprintLibrary::GetGameStateSubsystemFromGameState'
 		CompilerContext.MovePinLinksToIntermediate(*SpawnClassPin, *CallCreateClassTypePin);
 	}
 	else
@@ -229,7 +229,7 @@ void UK2Node_GetSubsystemFromGS::ExpandNode(FKismetCompilerContext& CompilerCont
 		CompilerContext.MovePinLinksToIntermediate(*SpawnGameStatePin, *CallCreateGameStatePin);
 	}
 
-	// Move result connection from spawn node to 'USubsystemBlueprintLibrary::Get[something]Subsystem'
+	// Move result connection from spawn node to 'UGameStateSubsystemBlueprintLibrary::GetGameStateSubsystem'
 	CallCreateResult->PinType = SpawnNodeResult->PinType;
 	CompilerContext.MovePinLinksToIntermediate(*SpawnNodeResult, *CallCreateResult);
 
