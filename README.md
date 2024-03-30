@@ -18,6 +18,8 @@ I am not the biggest fan of the Lyra Experience system, however I do see it's va
 
 It is still prone to the same limitations as the GameState and GameState Components - These subsystems do not exist until they GameState has replicated. Therefore if you are looking for a solution that is immediately available on clients upon a World being created, this Subsystem type doesn't offer that.
 
+When you want logic that can be dynamically added or removed based on specific GameStates you are probably better off just using a GameState Component for that as it's much better suited and designed for that purpose.
+
 ## Support
 
 This code was designed to work on a version > 5.3 but it's likely possible to backport the code. It doesn't necessarily do any black magic or special things that are new to the engine. If something is broken, you can ping me at my discord handle "snaps" and i'l try push a fix asap.
