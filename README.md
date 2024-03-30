@@ -16,9 +16,8 @@ I am not the biggest fan of the Lyra Experience system, however I do see it's va
 
 ## Support
 
-This code was designed to work on a version > 5.3 but it's likely possible to backport the code. It doesn't necessarily do any black magic or special things that are new to the engine.
+This code was designed to work on a version > 5.3 but it's likely possible to backport the code. It doesn't necessarily do any black magic or special things that are new to the engine. If something is broken, you can ping me at my discord handle "snaps" and i'l try push a fix asap.
 
 ## Contributions
 
-Big thanks to Vori <3
-PRs are welcome! Feel free to contibute <3
+Big thanks to Vori for helping me battle test it. PRs are welcome! Feel free to contibute <3
