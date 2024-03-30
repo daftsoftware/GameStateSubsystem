@@ -4,7 +4,7 @@
 Does what it says on the tin. Extensible GameState via subsystems rather than GameState Components.
 To setup please enable the plugin and reparent your GameState to AExtensibleGameStateBase, then just create a UGameStateSubsystem and it will be replicated and initialized automatically.
 
-You can find an example of the functionality in UExampleGameStateSubsystem, it's disabled by default, to turn it on just change ShouldCreateSubsystem to return true.
+You can find an example of the functionality in UExampleGameStateSubsystem, it's disabled by default, to turn it on just change CreateExampleSubsystem = true in ShouldCreateSubsystem.
 
 ## Why didn't you just replicate world subsystems?
 

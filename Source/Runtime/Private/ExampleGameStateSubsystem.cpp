@@ -61,7 +61,7 @@ void UExampleGameStateSubsystem::Deinitialize()
 
 bool UExampleGameStateSubsystem::ShouldCreateSubsystem(UObject* Outer) const
 {
-	constexpr bool CreateExampleSubsystem = true;
+	constexpr bool CreateExampleSubsystem = false;
 	return Super::ShouldCreateSubsystem(Outer) && CreateExampleSubsystem;
 }
 
