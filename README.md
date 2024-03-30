@@ -12,7 +12,11 @@ Because World Subsystems have bizarre and awkward lifetimes that highly complica
 
 ## Why is this useful?
 
-I am not the biggest fan of the Lyra Experience system, however I do see it's value - especially in GameState Components. However for some cases I think that it would be nice if they sort of just registered themselves and _just worked_tm rather than needing to be manually added as a default subobject or added dynamically like Lyra Experience does. So I made these Subsystem, and I find this solution to be a bit of a best of both worlds, hope you find a good usage for them in your projects <3
+I am not the biggest fan of the Lyra Experience system, however I do see it's value - especially in GameState Components. However for some cases I think that it would be nice if they sort of just registered themselves and just worked, rather than needing to be manually added as a default subobject or added dynamically like Lyra Experience does. So I made this Subsystem type, and I find this solution to be a bit of a best of both worlds, hope you find a good usage for them in your projects <3
+
+## When isn't it useful?
+
+It is still prone to the same limitations as the GameState and GameState Components - These subsystems do not exist until they GameState has replicated. Therefore if you are looking for a solution that is immediately available on clients upon a World being created, this Subsystem type doesn't offer that.
 
 ## Support
 
