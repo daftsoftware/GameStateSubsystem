@@ -16,7 +16,7 @@ Because World Subsystems have bizarre and awkward lifetimes that highly complica
 
 I am not the biggest fan of the Lyra Experience system, however I do see it's value - especially in GameState Components. However for some cases I think that it would be nice if they sort of just registered themselves and just worked, rather than needing to be manually added as a default subobject or added dynamically like Lyra Experience does. So I made this Subsystem type, and I find this solution to be a bit of a best of both worlds.
 
-It can make it more straightforward to add code in auxiliary modules that require a GameState or replication without having to do any extra work other than reparenting the top-level GameState class. You can achieve the same with GameState Components with the right setup of course, especially if you're using Lyra but it can be relatively to do it with these Subsystems.
+It can make it more straightforward to add code in auxiliary modules that require a GameState or replication without having to do any extra work other than reparenting the top-level GameState class. You can achieve the same with GameState Components with the right setup of course, especially if you're using Lyra, but it can be relatively easy to do it with these Subsystems.
 
 ## When isn't it useful?
 
