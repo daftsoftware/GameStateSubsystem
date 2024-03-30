@@ -10,7 +10,9 @@ Hope you find a good usage for them in your projects <3
 
 ## Why didn't you just replicate world subsystems?
 
-Because World Subsystems have bizarre and awkward lifetimes that highly complicate replication and networking. It is completely possible with Iris, but in practice it was actually very awkward to use and didn't really offer any considerable benefits over GameState Subsystems. The other more technical reason is because a subsystem is a singleton, by it's nature the patterns end up matching that of the GameState when it's replicated anyway - you can't really meaningfully implement a Subsystem that behaves like the Player Controller because the Server would require an authoritative version for each player with individual remotes having their local proxy of said subsystem. However that doesn't work because it breaks the singleton pattern on the server due to requiring multiple instances.
+Because World Subsystems have bizarre and awkward lifetimes that highly complicate replication and networking. It is completely possible with Iris, but in practice it was actually very awkward to use and it didn't really offer many considerable benefits over GameState Subsystems other than a few niche usages.
+
+The other more technical reason is because a subsystem is a singleton, by it's nature the patterns end up matching that of the GameState when it's replicated anyway - you can't really meaningfully implement a Subsystem that behaves like the Player Controller because the Server would require an authoritative version for each player with individual remotes having their local proxy of said subsystem. However that doesn't work because it breaks the singleton pattern on the server due to requiring multiple instances.
 
 ## Why is this useful?
 
