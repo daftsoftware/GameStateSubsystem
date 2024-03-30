@@ -22,7 +22,7 @@ It can make it more straightforward to add code in auxiliary modules that requir
 
 ## When isn't it useful?
 
-It is still prone to the same limitations as the GameState and GameState Components - These subsystems do not exist until they GameState has replicated. Therefore if you are looking for a solution that is immediately available on clients upon a World being created, this Subsystem type doesn't offer that.
+It is still prone to the same limitations as the GameState and GameState Components - These subsystems do not exist on clients until the GameState has replicated. Therefore if you are looking for a solution that is immediately available on clients upon a World being created, this Subsystem type doesn't offer that.
 
 When you want logic that can be dynamically added or removed based on specific GameStates you are probably better off just using a GameState Component for that as it's much better suited and designed for that purpose.
 
