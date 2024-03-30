@@ -57,6 +57,8 @@ public:
 
 	GAMESTATESUBSYSTEM_API ENetRole GetLocalRole() const;
 	GAMESTATESUBSYSTEM_API bool HasAuthority() const;
+
+	virtual bool ShouldCreateSubsystem(UObject* Outer) const override;
 	
 	/**
 	 * Returns a reference to the UWorld this subsystem is contained within.

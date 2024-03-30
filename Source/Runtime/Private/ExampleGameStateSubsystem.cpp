@@ -61,7 +61,8 @@ void UExampleGameStateSubsystem::Deinitialize()
 
 bool UExampleGameStateSubsystem::ShouldCreateSubsystem(UObject* Outer) const
 {
-	return true;
+	constexpr bool CreateExampleSubsystem = true;
+	return Super::ShouldCreateSubsystem(Outer) && CreateExampleSubsystem;
 }
 
 void UExampleGameStateSubsystem::Tick(float DeltaTime)
@@ -99,4 +100,9 @@ void UExampleGameStateSubsystem::OnRep_RepVar2(int32 NewVar2)
 	{
 		UE_LOGFMT(LogNet, Display, "RepVar2 Changed on Example GameState Subsystem! {0}", NewVar2);
 	}
+}
+
+void UExampleGameStateSubsystem::BlueprintDoAThing()
+{
+	UE_LOGFMT(LogTemp, Display, "Do a thing called from Blueprint.");
 }

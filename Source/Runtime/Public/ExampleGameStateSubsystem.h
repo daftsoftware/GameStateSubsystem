@@ -41,6 +41,9 @@ public:
 	UFUNCTION()
 	void OnRep_RepVar2(int32 NewVar2);
 
+	UFUNCTION(BlueprintCallable)
+	void BlueprintDoAThing();
+
 private:
 
 	FTimerHandle RPCTestTimer;

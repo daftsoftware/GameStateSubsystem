@@ -19,7 +19,7 @@
 		},
 		{
 			"Name" : "GameStateSubsystemEd",
-			"Type" : "Editor",
+			"Type" : "Developer",
 			"LoadingPhase" : "Default"
 		}
 	],

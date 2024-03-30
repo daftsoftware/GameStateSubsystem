@@ -25,6 +25,12 @@ bool UGameStateSubsystem::HasAuthority() const
 	return (GetLocalRole() == ROLE_Authority);
 }
 
+bool UGameStateSubsystem::ShouldCreateSubsystem(UObject* Outer) const
+{
+	const UWorld* World = Outer->GetWorld();
+	return World && World->IsGameWorld();
+}
+
 UWorld& UGameStateSubsystem::GetWorldRef() const
 {
 	checkf(GetOuter()->GetWorld(), TEXT("Invalid world on outer."));

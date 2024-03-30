@@ -17,7 +17,12 @@ public class GameStateSubsystemEd : ModuleRules
 	
 		PrivateDependencyModuleNames.AddRange(new string[] {
 			"Core",
-			"CoreUObject"
+			"CoreUObject",
+			"Engine",
+			"UnrealEd",
+			"BlueprintGraph",
+			"KismetCompiler",
+			"GameStateSubsystem"
 		});
 	}
 }
