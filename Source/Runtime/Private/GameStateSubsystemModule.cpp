@@ -10,6 +10,8 @@
 #include "GameStateSubsystemModule.h"
 #include "Modules/ModuleManager.h"
 
+#include UE_INLINE_GENERATED_CPP_BY_NAME(GameStateSubsystemModule)
+
 void FGameStateSubsystemModule::StartupModule()
 {
 }
