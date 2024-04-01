@@ -11,6 +11,8 @@
 #include "Logging/StructuredLog.h"
 #include "Net/UnrealNetwork.h"
 
+#include UE_INLINE_GENERATED_CPP_BY_NAME(ExampleGameStateSubsystem)
+
 static FString NetModeToString(ENetMode InNetMode)
 {
 	switch(InNetMode)

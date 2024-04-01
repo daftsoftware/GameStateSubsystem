@@ -10,6 +10,8 @@
 #include "GameStateSubsystemBlueprintLibrary.h"
 #include "ExtendableGameStateBase.h"
 
+#include UE_INLINE_GENERATED_CPP_BY_NAME(GameStateSubsystemBlueprintLibrary)
+
 UGameStateSubsystem* UGameStateSubsystemBlueprintLibrary::GetGameStateSubsystem(UObject* ContextObject, TSubclassOf<UGameStateSubsystem> Class)
 {
    	if(const auto* GameState = Cast<AExtendableGameStateBase>(ContextObject))

@@ -10,6 +10,8 @@
 #include "GameStateSubsystem.h"
 #include "ExtendableGameStateBase.h"
 
+#include UE_INLINE_GENERATED_CPP_BY_NAME(GameStateSubsystem)
+
 AExtendableGameStateBase* UGameStateSubsystem::GetGameState() const
 {
 	return CastChecked<AExtendableGameStateBase>(GetOuter());
