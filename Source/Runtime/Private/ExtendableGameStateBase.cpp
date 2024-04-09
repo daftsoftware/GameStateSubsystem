@@ -9,6 +9,8 @@
 
 #include "ExtendableGameStateBase.h"
 
+#include UE_INLINE_GENERATED_CPP_BY_NAME(ExtendableGameStateBase)
+
 AExtendableGameStateBase::AExtendableGameStateBase()
 {
 	bReplicateUsingRegisteredSubObjectList = true;

@@ -17,6 +17,8 @@
 #include "EdGraphSchema_K2.h"
 #include "KismetCompiler.h"
 
+#include UE_INLINE_GENERATED_CPP_BY_NAME(K2Node_GetGameStateSubsystem)
+
 // ************************************************************************************
 //    UK2Node_GetGameStateSubsystem
 // ************************************************************************************
