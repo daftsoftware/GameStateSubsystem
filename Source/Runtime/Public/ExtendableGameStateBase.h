@@ -13,8 +13,8 @@
 #include "GameFramework/GameStateBase.h"
 #include "ExtendableGameStateBase.generated.h"
 
-UCLASS(MinimalAPI)
-class AExtendableGameStateBase : public AGameStateBase
+UCLASS()
+class GAMESTATESUBSYSTEM_API AExtendableGameStateBase : public AGameStateBase
 {
 	GENERATED_BODY()
 public:
