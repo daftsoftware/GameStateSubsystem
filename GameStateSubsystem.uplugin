@@ -19,7 +19,7 @@
 		},
 		{
 			"Name" : "GameStateSubsystemEd",
-			"Type" : "Developer",
+			"Type" : "UncookedOnly",
 			"LoadingPhase" : "Default"
 		}
 	],
