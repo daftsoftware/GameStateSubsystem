@@ -9,7 +9,9 @@
 
 #include "GameStateSubsystem.h"
 #include "ExtendableGameStateBase.h"
+#if UE_WITH_IRIS
 #include "Iris/ReplicationSystem/ReplicationFragmentUtil.h"
+#endif
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(GameStateSubsystem)
 
