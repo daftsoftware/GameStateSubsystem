@@ -74,6 +74,9 @@ public:
 	GAMESTATESUBSYSTEM_API virtual bool IsSupportedForNetworking() const override final;
 	GAMESTATESUBSYSTEM_API virtual int32 GetFunctionCallspace(UFunction* Function, FFrame* Stack) override;
 	GAMESTATESUBSYSTEM_API virtual bool CallRemoteFunction(UFunction* Function, void* Parms, FOutParmRec* OutParms, FFrame* Stack) override;
+#if UE_WITH_IRIS
+	GAMESTATESUBSYSTEM_API virtual void RegisterReplicationFragments(UE::Net::FFragmentRegistrationContext& Context, UE::Net::EFragmentRegistrationFlags RegistrationFlags) override;
+#endif
 	//~ End UObject
 };
 

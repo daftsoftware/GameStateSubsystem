@@ -22,7 +22,9 @@ public class GameStateSubsystem : ModuleRules
 		PrivateDependencyModuleNames.AddRange(new string[] {
 			"Core",
 			"CoreUObject",
-            "Engine"
+            "Engine",
+            "IrisCore",
+            "NetCore"
 		});
 	}
 }

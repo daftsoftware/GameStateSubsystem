@@ -9,6 +9,7 @@
 
 #include "GameStateSubsystem.h"
 #include "ExtendableGameStateBase.h"
+#include "Iris/ReplicationSystem/ReplicationFragmentUtil.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(GameStateSubsystem)
 
@@ -73,6 +74,15 @@ bool UGameStateSubsystem::CallRemoteFunction(UFunction* Function, void* Parms, F
 	}
 	return false;
 }
+
+#if UE_WITH_IRIS
+void UGameStateSubsystem::RegisterReplicationFragments(UE::Net::FFragmentRegistrationContext& Context, UE::Net::EFragmentRegistrationFlags RegistrationFlags)
+{
+	Super::RegisterReplicationFragments(Context, RegistrationFlags);
+	
+	UE::Net::FReplicationFragmentUtil::CreateAndRegisterFragmentsForObject(this, Context, RegistrationFlags);
+}
+#endif
 
 ETickableTickType UTickableGameStateSubsystem::GetTickableTickType() const
 {
